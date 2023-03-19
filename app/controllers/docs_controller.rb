@@ -10,11 +10,7 @@ class DocsController < ApplicationController
 
     def new
         @doc=Doc.new
-        if @doc.save
-            redirect_to @doc
-       else
-           render 'new'
-       end    
+       
     end
 
     def create
@@ -31,9 +27,19 @@ class DocsController < ApplicationController
     end
 
     def update
+        
+
+        if @doc.update(doc_params)
+             redirect_to @doc
+        else
+            render 'edit'
+        end    
     end
 
     def destroy
+        @doc.destroy
+        redirect_to docs_path
+
     end
 
     private

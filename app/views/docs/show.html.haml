@@ -1,3 +1,8 @@
 %h1= @doc.title
 
 %p= @doc.content
+
+=link_to "All docs",docs_path
+=link_to "fix doc",edit_doc_path(@doc)
+
+=link_to "delete", doc_path(@doc), data: { turbo_method: :delete, turbo_confirm: "Are you sure you whant to delete this Documentation?" } 
